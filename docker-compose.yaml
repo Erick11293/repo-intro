@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+  opt:
+    container_name: repo-intro
+    build: .
+    volumes:
+      - type: bind
+        source: ./data # ruta en host
+        target: /home/repo-intro/data
+      - type: bind
+        source: ./notebooks # ruta en host
+        target: /home/repo-intro/notebooks
+      - type: bind
+        source: ./src # ruta en host
+        target: /home/repo-intro/src
+    deploy:
+      resources:
+        limits:
+          cpus: "10.0"
+          memory: "10g"
+        reservations:
+          cpus: "2.0"
+          memory: "4g"
+    environment:
+      - JUPYTER_TOKEN=
+    ports:
+      - 8891:8888
+
