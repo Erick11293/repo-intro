@@ -4,6 +4,7 @@ USER ${NB_UID}
 
 RUN pip install dbfread
 RUN pip install linearmodels
+RUN pip install openai
 
 USER root
 
